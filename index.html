@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EngageFi - Where Attention Meets Value</title>
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
@@ -17,16 +18,23 @@
 
     <header>
         <div class="logo">EngageFi</div>
-        <nav>
-            <ul>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#how">How It Works</a></li>
-                <li><a href="#roadmap">Roadmap</a></li>
-                <li><a href="#whitepaper">Whitepaper</a></li>
-            </ul>
-        </nav>
-        <a href="#" class="cta-button">Launch App</a>
-        <button class="mobile-menu-btn">☰</button>
+        <div class="nav-center">
+            <nav>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how">How It Works</a></li>
+                    <li><a href="#roadmap">Roadmap</a></li>
+                    <li><a href="#whitepaper">Whitepaper</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-actions">
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                <span id="theme-icon">🌙</span>
+            </button>
+            <a href="#" class="cta-button">Launch App</a>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
     </header>
 
     <section class="hero">
@@ -94,7 +102,7 @@
         </div>
     </section>
 
-    <section class="content-section" style="background: linear-gradient(180deg, #f8fafc 0%, white 100%);">
+    <section class="content-section" style="background: var(--bg-section);">
         <div class="container">
             <h2 class="section-title">The EngageFi Solution</h2>
 
@@ -162,7 +170,7 @@
         </div>
     </section>
 
-    <section id="roadmap" class="content-section" style="background: linear-gradient(180deg, #f8fafc 0%, white 100%);">
+    <section id="roadmap" class="content-section" style="background: var(--bg-section);">
         <div class="container">
             <h2 class="section-title">Roadmap</h2>
 
@@ -203,6 +211,34 @@
     </footer>
 
     <script>
+        // Theme toggle functionality
+        function toggleTheme() {
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('theme-icon');
+            const currentTheme = html.getAttribute('data-theme');
+
+            if (currentTheme === 'dark') {
+                html.removeAttribute('data-theme');
+                themeIcon.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                themeIcon.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Load saved theme on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            const themeIcon = document.getElementById('theme-icon');
+
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeIcon.textContent = '☀️';
+            }
+        });
+
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
