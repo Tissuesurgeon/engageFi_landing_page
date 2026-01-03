@@ -5,9 +5,429 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TrueEngage - Where Attention Meets Value</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #8b5cf6;
+            --accent: #ec4899;
+            --bg-primary: #ffffff;
+            --bg-section: #f9fafb;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --border: #e5e7eb;
+        }
 
+        [data-theme="dark"] {
+            --primary: #818cf8;
+            --primary-dark: #6366f1;
+            --secondary: #a78bfa;
+            --accent: #f472b6;
+            --bg-primary: #0f172a;
+            --bg-section: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --border: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape1 {
+            width: 600px;
+            height: 600px;
+            background: var(--primary);
+            top: -200px;
+            right: -100px;
+        }
+
+        .shape2 {
+            width: 500px;
+            height: 500px;
+            background: var(--secondary);
+            bottom: -150px;
+            left: -100px;
+            animation-delay: -7s;
+        }
+
+        .shape3 {
+            width: 400px;
+            height: 400px;
+            background: var(--accent);
+            top: 50%;
+            left: 50%;
+            animation-delay: -14s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(50px, -50px) scale(1.1); }
+            66% { transform: translate(-30px, 30px) scale(0.9); }
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        [data-theme="dark"] header {
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-center {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background: var(--bg-section);
+        }
+
+        .cta-button {
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-primary);
+            padding: 0.5rem;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 6rem 5% 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: var(--bg-section);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .content-section {
+            padding: 5rem 5%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--bg-primary);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        footer {
+            background: var(--bg-section);
+            padding: 2rem 5%;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-center {
+                position: fixed;
+                top: 73px;
+                left: 0;
+                right: 0;
+                background: var(--bg-primary);
+                border-bottom: 1px solid var(--border);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-center.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 1.5rem;
+                gap: 0;
+            }
+
+            nav ul li {
+                border-bottom: 1px solid var(--border);
+            }
+
+            nav ul li:last-child {
+                border-bottom: none;
+            }
+
+            nav a {
+                display: block;
+                padding: 1rem 0;
+            }
+
+            .header-actions .cta-button {
+                display: none;
+            }
+
+            .hero {
+                padding: 3rem 5% 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-section {
+                padding: 3rem 5%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 1rem 4%;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .theme-toggle {
+                font-size: 1.2rem;
+                padding: 0.3rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -19,13 +439,11 @@
 
     <header>
         <div class="logo">👍<span style="color: goldenrod;">True</span>Engage</div>
-        <div class="nav-center">
+        <div class="nav-center" id="navMenu">
             <nav>
                 <ul>
-                    <li><a href="#features">Features</a></li>
                     <li><a href="#how">How It Works</a></li>
                     <li><a href="#roadmap">Roadmap</a></li>
-                    <li><a href="#whitepaper">Whitepaper</a></li>
                 </ul>
             </nav>
         </div>
@@ -34,7 +452,7 @@
                 <span id="theme-icon">🌙</span>
             </button>
             <a href="#" class="cta-button">Join Testnet</a>
-            <button class="mobile-menu-btn">☰</button>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu">☰</button>
         </div>
     </header>
 
@@ -48,11 +466,10 @@
         </div>
 
         <div style="margin-top: 65px;">
-            <div class="stat-label" style="font-size: 1.5rem !important; font-weight: 600;  margin-bottom: 1rem;">📈 Market Opportunity</div>
+            <div class="stat-label" style="font-size: 1.5rem !important; font-weight: 600; margin-bottom: 1rem;">📈 Market Opportunity</div>
         </div>
 
         <div class="stats-container">
-            
             <div class="stat-card">
                 <div class="stat-label">
                     <span class="stat-icon"></span>
@@ -110,7 +527,7 @@
 
     <section class="content-section" style="background: var(--bg-section);">
         <div class="container">
-            <h2 class="section-title">The EngageFi Solution</h2>
+            <h2 class="section-title">The TrueEngage Solution</h2>
 
             <div class="features-grid">
                 <div class="feature-card">
@@ -131,8 +548,7 @@
                     <div class="feature-icon">🔒</div>
                     <h3>Transparent & Fair</h3>
                     <p>Blockchain-powered escrow ensures trustworthy payments, verifiable rewards, and quality
-                        engagement.
-                    </p>
+                        engagement.</p>
                 </div>
 
                 <div class="feature-card">
@@ -152,8 +568,8 @@
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">1️⃣</div>
-                    <h3>Acquire TEE Tokens</h3>
-                    <p>Creators acquire TEE tokens to fund engagement campaigns and promotional tasks.</p>
+                    <h3>Acquire TRUE Tokens</h3>
+                    <p>Creators acquire TRUE tokens to fund engagement campaigns and promotional tasks.</p>
                 </div>
 
                 <div class="feature-card">
@@ -185,15 +601,13 @@
                 <div class="feature-card">
                     <div class="feature-icon">🚀</div>
                     <h3>Phase 1 - MVP</h3>
-                    <p>Off-chain points system, manual verification, and early creator onboarding to test the platform.
-                    </p>
+                    <p>Off-chain points system, manual verification, and early creator onboarding to test the platform.</p>
                 </div>
 
                 <div class="feature-card">
                     <div class="feature-icon">🔗</div>
                     <h3>Phase 2 - Token Integration</h3>
-                    <p>Limited TEE circulation, on-chain escrow implementation, and closed beta testing with select
-                        users.</p>
+                    <p>Limited TEE circulation, on-chain escrow implementation, and closed beta testing with select users.</p>
                 </div>
 
                 <div class="feature-card">
@@ -218,6 +632,26 @@
     </footer>
 
     <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            navMenu.classList.toggle('active');
+            menuBtn.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+        }
+
+        // Close mobile menu when clicking a nav link
+        document.querySelectorAll('.nav-center a').forEach(link => {
+            link.addEventListener('click', () => {
+                const navMenu = document.getElementById('navMenu');
+                const menuBtn = document.querySelector('.mobile-menu-btn');
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    menuBtn.textContent = '☰';
+                }
+            });
+        });
+
         // Theme toggle functionality
         function toggleTheme() {
             const html = document.documentElement;
@@ -227,24 +661,11 @@
             if (currentTheme === 'dark') {
                 html.removeAttribute('data-theme');
                 themeIcon.textContent = '🌙';
-                localStorage.setItem('theme', 'light');
             } else {
                 html.setAttribute('data-theme', 'dark');
                 themeIcon.textContent = '☀️';
-                localStorage.setItem('theme', 'dark');
             }
         }
-
-        // Load saved theme on page load
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('theme');
-            const themeIcon = document.getElementById('theme-icon');
-
-            if (savedTheme === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                themeIcon.textContent = '☀️';
-            }
-        });
 
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
