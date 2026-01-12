@@ -1,36 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TrueEngage - Where Attention Meets Value</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>TrueEngage - Where Real Attention Is Fairly Rewarded</title>
     <style>
-        :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary: #8b5cf6;
-            --accent: #ec4899;
-            --bg-primary: #ffffff;
-            --bg-section: #f9fafb;
-            --text-primary: #1f2937;
-            --text-secondary: #6b7280;
-            --border: #e5e7eb;
-        }
-
-        [data-theme="dark"] {
-            --primary: #818cf8;
-            --primary-dark: #6366f1;
-            --secondary: #a78bfa;
-            --accent: #f472b6;
-            --bg-primary: #0f172a;
-            --bg-section: #1e293b;
-            --text-primary: #f1f5f9;
-            --text-secondary: #cbd5e1;
-            --border: #334155;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -38,712 +12,994 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            transition: background 0.3s, color 0.3s;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #0a0a1a;
+            color: #fff;
+            overflow-x: hidden;
         }
 
-        .gradient-bg {
+        /* Navigation */
+        nav {
             position: fixed;
             top: 0;
-            left: 0;
             width: 100%;
-            height: 100vh;
-            z-index: -1;
-            overflow: hidden;
+            padding: 1.5rem 5%;
+            background: rgba(10, 10, 26, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(138, 92, 246, 0.1);
         }
 
-        .shape {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.3;
-            animation: float 20s infinite ease-in-out;
-        }
-
-        .shape1 {
-            width: 600px;
-            height: 600px;
-            background: var(--primary);
-            top: -200px;
-            right: -100px;
-        }
-
-        .shape2 {
-            width: 500px;
-            height: 500px;
-            background: var(--secondary);
-            bottom: -150px;
-            left: -100px;
-            animation-delay: -7s;
-        }
-
-        .shape3 {
-            width: 400px;
-            height: 400px;
-            background: var(--accent);
-            top: 50%;
-            left: 50%;
-            animation-delay: -14s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(50px, -50px) scale(1.1); }
-            66% { transform: translate(-30px, 30px) scale(0.9); }
-        }
-
-        header {
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 5%;
-            position: sticky;
-            top: 0;
-            background: var(--bg-primary);
-            z-index: 1000;
         }
 
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
+            color: #fff;
+        }
+
+        .logo span {
+            color: #f59e0b;
+        }
+
+        .nav-links {
             display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: white;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        [data-theme="dark"] .logo {
-            background: #1e293b;
-        }
-
-        .nav-center {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        nav ul {
-            display: flex;
+            gap: 2rem;
             list-style: none;
-            gap: 0.5rem;
-            background: #f0f0ff;
-            padding: 0.5rem;
-            border-radius: 50px;
         }
 
-        [data-theme="dark"] nav ul {
-            background: #1e293b;
-        }
-
-        nav ul li a {
+        .nav-links a {
+            color: #a0a0b8;
             text-decoration: none;
-            color: var(--text-primary);
-            font-weight: 500;
-            padding: 0.6rem 1.5rem;
-            border-radius: 50px;
-            transition: all 0.3s;
-            display: block;
+            transition: color 0.3s;
         }
 
-        nav ul li a:hover {
-            background: white;
-            color: var(--primary);
+        .nav-links a:hover {
+            color: #fff;
         }
 
-        [data-theme="dark"] nav ul li a:hover {
-            background: #334155;
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .theme-toggle {
-            background: white;
+        .cta-btn {
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%);
             border: none;
-            font-size: 1.2rem;
+            border-radius: 8px;
+            color: #fff;
+            font-weight: 600;
             cursor: pointer;
-            padding: 0.6rem;
-            border-radius: 50%;
-            transition: all 0.3s;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            width: 40px;
-            height: 40px;
+            transition: transform 0.2s, box-shadow 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 8rem 5% 4rem;
+            background: radial-gradient(ellipse at bottom, #1e1b4b 0%, #0a0a1a 50%);
+            position: relative;
+            overflow: hidden;
         }
 
-        [data-theme="dark"] .theme-toggle {
-            background: #1e293b;
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        .header-actions .login-btn {
-            background: transparent;
-            color: var(--primary);
-            padding: 0.6rem 1.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-        }
-
-        .header-actions .login-btn:hover {
-            background: #f0f0ff;
-        }
-
-        [data-theme="dark"] .header-actions .login-btn:hover {
-            background: #1e293b;
-        }
-
-        .cta-button {
-            background: var(--primary);
-            color: white;
-            padding: 0.6rem 1.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
-        }
-
-        .cta-button:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: white;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-primary);
-            padding: 0.6rem;
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1200px;
+            height: 600px;
+            background: linear-gradient(180deg, rgba(139, 92, 246, 0.15) 0%, transparent 100%);
             border-radius: 50%;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            width: 40px;
-            height: 40px;
+            filter: blur(80px);
         }
 
-        [data-theme="dark"] .mobile-menu-btn {
-            background: #1e293b;
-        }
-
-        .hero {
+        .hero-content {
+            max-width: 900px;
             text-align: center;
-            padding: 6rem 5% 4rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            margin-bottom: 2rem;
-            line-height: 1.2;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            font-weight: 700;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .hero-buttons {
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: #a0a0b8;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        .hero-cta {
             display: flex;
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 3rem;
-        }
-
-        .btn-primary, .btn-secondary {
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            font-size: 1rem;
         }
 
         .btn-primary {
-            background: var(--primary);
-            color: white;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%);
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.3s;
         }
 
         .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.5);
         }
 
         .btn-secondary {
+            padding: 1rem 2.5rem;
             background: transparent;
-            color: var(--text-primary);
-            border: 2px solid var(--border);
+            border: 2px solid rgba(139, 92, 246, 0.5);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
         }
 
         .btn-secondary:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-            transform: translateY(-2px);
+            border-color: #8b5cf6;
+            background: rgba(139, 92, 246, 0.1);
         }
 
-        .stats-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+        /* Problem Section */
+        .problem-section {
+            padding: 6rem 5%;
+            background: #0a0a1a;
         }
 
-        .stat-card {
-            background: var(--bg-section);
-            padding: 2rem;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            transition: all 0.3s;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .content-section {
-            padding: 5rem 5%;
-        }
-
-        .container {
-            max-width: 1200px;
+        .section-container {
+            max-width: 1400px;
             margin: 0 auto;
         }
 
-        .section-title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
+        .section-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
-        .features-grid {
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: #a0a0b8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .problem-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
+            margin-top: 3rem;
         }
 
-        .feature-card {
-            background: var(--bg-primary);
-            padding: 2rem;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            transition: all 0.3s;
+        .problem-card {
+            background: linear-gradient(135deg, rgba(30, 27, 75, 0.4) 0%, rgba(10, 10, 26, 0.8) 100%);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            transition: transform 0.3s, border-color 0.3s;
         }
 
-        .feature-card:hover {
+        .problem-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-            border-color: var(--primary);
+            border-color: rgba(139, 92, 246, 0.5);
         }
 
-        .feature-icon {
+        .problem-card .icon {
             font-size: 3rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
-        .feature-card h3 {
+        .problem-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: var(--text-primary);
+            color: #fff;
         }
 
-        .feature-card p {
-            color: var(--text-secondary);
-            line-height: 1.8;
+        .problem-card .stat {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
         }
 
-        footer {
-            background: var(--bg-section);
-            padding: 2rem 5%;
+        .problem-card p {
+            color: #a0a0b8;
+            line-height: 1.6;
+        }
+
+        /* Solution Section */
+        .solution-section {
+            padding: 6rem 5%;
+            background: radial-gradient(ellipse at top, #1e1b4b 0%, #0a0a1a 50%);
+        }
+
+        .solution-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .step {
             text-align: center;
-            border-top: 1px solid var(--border);
-            color: var(--text-secondary);
+            position: relative;
         }
 
-        /* Mobile Styles */
+        .step-number {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+        }
+
+        .step h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .step p {
+            color: #a0a0b8;
+            line-height: 1.6;
+        }
+
+        .solution-features {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 4rem;
+        }
+
+        .feature-badge {
+            padding: 1rem 2rem;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 50px;
+            color: #8b5cf6;
+            font-weight: 600;
+        }
+
+        /* For Creators/Users Sections */
+        .audience-section {
+            padding: 6rem 5%;
+            background: #0a0a1a;
+        }
+
+        .audience-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .audience-text h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .benefits-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .benefits-list li {
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, rgba(30, 27, 75, 0.4) 0%, rgba(10, 10, 26, 0.8) 100%);
+            border-left: 3px solid #8b5cf6;
+            border-radius: 8px;
+        }
+
+        .benefits-list li strong {
+            color: #8b5cf6;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .benefits-list li p {
+            color: #a0a0b8;
+            line-height: 1.6;
+        }
+
+        /* Why Blockchain Section */
+        .blockchain-section {
+            padding: 6rem 5%;
+            background: radial-gradient(ellipse at center, #1e1b4b 0%, #0a0a1a 50%);
+        }
+
+        .comparison-table {
+            max-width: 900px;
+            margin: 3rem auto;
+            background: rgba(30, 27, 75, 0.3);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+        }
+
+        .comparison-row:first-child {
+            background: rgba(139, 92, 246, 0.1);
+            font-weight: 700;
+        }
+
+        .comparison-row div {
+            padding: 0.5rem;
+            text-align: center;
+        }
+
+        .comparison-row .check {
+            color: #10b981;
+        }
+
+        .comparison-row .cross {
+            color: #ef4444;
+        }
+
+        /* Roadmap Section */
+        .roadmap-section {
+            padding: 6rem 5%;
+            background: #0a0a1a;
+        }
+
+        .roadmap-timeline {
+            max-width: 1000px;
+            margin: 3rem auto;
+            position: relative;
+        }
+
+        .roadmap-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .roadmap-marker {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-weight: 700;
+            box-shadow: 0 5px 20px rgba(139, 92, 246, 0.4);
+        }
+
+        .roadmap-content {
+            flex: 1;
+            background: linear-gradient(135deg, rgba(30, 27, 75, 0.4) 0%, rgba(10, 10, 26, 0.8) 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .roadmap-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #8b5cf6;
+        }
+
+        .roadmap-content ul {
+            list-style: none;
+            color: #a0a0b8;
+        }
+
+        .roadmap-content ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .roadmap-content ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #8b5cf6;
+        }
+
+        /* Trust Section */
+        .trust-section {
+            padding: 6rem 5%;
+            background: radial-gradient(ellipse at bottom, #1e1b4b 0%, #0a0a1a 50%);
+        }
+
+        .trust-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .trust-card {
+            background: linear-gradient(135deg, rgba(30, 27, 75, 0.4) 0%, rgba(10, 10, 26, 0.8) 100%);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            text-align: center;
+        }
+
+        .trust-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .trust-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .trust-card p {
+            color: #a0a0b8;
+            line-height: 1.6;
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            padding: 8rem 5%;
+            background: radial-gradient(ellipse at center, #1e1b4b 0%, #0a0a1a 80%);
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .final-cta p {
+            font-size: 1.3rem;
+            color: #a0a0b8;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .email-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .email-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 1.2rem 1.5rem;
+            background: rgba(30, 27, 75, 0.5);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .email-input::placeholder {
+            color: #6b7280;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 5%;
+            background: #05050f;
+            border-top: 1px solid rgba(139, 92, 246, 0.1);
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: #8b5cf6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #a0a0b8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(139, 92, 246, 0.1);
+            text-align: center;
+            color: #6b7280;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .nav-center {
-                position: fixed;
-                top: 73px;
-                left: 0;
-                right: 0;
-                background: var(--bg-primary);
-                border-bottom: 1px solid var(--border);
-                transform: translateX(0) translateY(-100%);
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s ease;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            }
-
-            .nav-center.active {
-                transform: translateX(0) translateY(0);
-                opacity: 1;
-                visibility: visible;
-            }
-
-            nav ul {
-                flex-direction: column;
-                padding: 1.5rem;
-                gap: 0;
-                background: transparent;
-                border-radius: 0;
-            }
-
-            nav ul li {
-                border-bottom: 1px solid var(--border);
-            }
-
-            nav ul li:last-child {
-                border-bottom: none;
-            }
-
-            nav ul li a {
-                display: block;
-                padding: 1rem 0;
-                border-radius: 0;
-            }
-
-            nav ul li a:hover {
-                background: transparent;
-                color: var(--primary);
-            }
-
-            .header-actions .cta-button {
+            .nav-links {
                 display: none;
             }
 
             .hero {
-                padding: 3rem 5% 2rem;
+                padding: 6rem 5% 3rem;
             }
 
-            .hero-buttons {
+            .comparison-row {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .comparison-row div {
+                text-align: left;
+            }
+
+            .roadmap-item {
                 flex-direction: column;
-                align-items: stretch;
-            }
-
-            .stats-container {
-                grid-template-columns: 1fr;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .content-section {
-                padding: 3rem 5%;
             }
         }
 
-        @media (max-width: 480px) {
-            header {
-                padding: 1rem 4%;
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
             }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-            .logo {
-                font-size: 1.2rem;
-            }
-
-            .theme-toggle {
-                font-size: 1.2rem;
-                padding: 0.3rem;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
+        .animate-in {
+            animation: fadeInUp 0.8s ease-out;
         }
     </style>
 </head>
-
 <body>
-    <div class="gradient-bg">
-        <div class="shape shape1"></div>
-        <div class="shape shape2"></div>
-        <div class="shape shape3"></div>
-    </div>
-
-    <header>
-        <div class="logo">👍<span style="color: goldenrod;">True</span>Engage</div>
-        <div class="nav-center" id="navMenu">
-            <nav>
-                <ul>
-                    <li><a href="#how">How It Works</a></li>
-                    <li><a href="#roadmap">Roadmap</a></li>
-                </ul>
-            </nav>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">True<span>Engage</span></div>
+            <ul class="nav-links">
+                <li><a href="#problem">Problem</a></li>
+                <li><a href="#solution">Solution</a></li>
+                <li><a href="#roadmap">Roadmap</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="cta-btn">Get Started</button>
         </div>
-        <div class="header-actions">
-            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
-                <span id="theme-icon">🌙</span>
-            </button>
-            <a href="#" class="cta-button">Join Testnet</a>
-            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle menu">☰</button>
-        </div>
-    </header>
+    </nav>
 
+    <!-- Hero Section -->
     <section class="hero">
-        <h1>Where Attention<br>Meets Value</h1>
-
-        <div class="hero-buttons">
-            <a href="#" class="btn-primary">Get Started</a>
-            <a href="#" class="btn-secondary">Join Testnet</a>
-            <a href="📘 TrueEngage WHITEPAPER.pdf" class="btn-secondary" download>Read Whitepaper</a>
-        </div>
-
-        <div style="margin-top: 65px;">
-            <div class="stat-label" style="font-size: 1.5rem !important; font-weight: 600; margin-bottom: 1rem;">📈 Market Opportunity</div>
-        </div>
-
-        <div class="stats-container">
-            <div class="stat-card">
-                <div class="stat-label">
-                    <span class="stat-icon"></span>
-                    <span>Creator economy</span>
-                </div>
-                <div class="stat-value">$250B+</div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-label">
-                    <span class="stat-icon"></span>
-                    <span>Digital advertising</span>
-                </div>
-                <div class="stat-value">$600B+</div>
-            </div>
-
-            <div class="stat-card">
-                <div class="stat-label">
-                    <span class="stat-icon"></span>
-                    <span>Web3 users</span>
-                </div>
-                <div class="stat-value">420M+</div>
+        <div class="hero-content">
+            <h1 class="animate-in">Where Real Attention Is <span class="highlight">Fairly Rewarded</span></h1>
+            <p class="animate-in">TrueEngage is a transparent marketplace where creators pay for verified human engagement — and users earn rewards for meaningful participation.</p>
+            <div class="hero-cta">
+                <button class="btn-primary">Join the Waitlist</button>
+                <button class="btn-secondary">How It Works</button>
             </div>
         </div>
     </section>
 
-    <section id="features" class="content-section">
-        <div class="container">
-            <h2 class="section-title">The Problem We're Solving</h2>
-
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">📉</div>
-                    <h3>Broken Content Discovery</h3>
-                    <p>Modern social media platforms suffer from declining organic reach, high advertising costs, and
-                        algorithmic bias favoring large accounts.</p>
+    <!-- Problem Section -->
+    <section class="problem-section" id="problem">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>The Digital Economy Is <span class="highlight">Broken</span></h2>
+                <p>Creators face rising costs while users generate billions in value without compensation</p>
+            </div>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="icon">📉</div>
+                    <h3>Collapsing Reach</h3>
+                    <div class="stat">&lt;5%</div>
+                    <p>Organic reach on major platforms has fallen below 5% for most creators, forcing dependence on paid advertising</p>
                 </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">💸</div>
-                    <h3>Exploited User Attention</h3>
-                    <p>Platforms monetize your attention while users receive no direct reward. Your engagement value is
-                        captured centrally.</p>
+                <div class="problem-card">
+                    <div class="icon">💸</div>
+                    <h3>Rising Ad Costs</h3>
+                    <div class="stat">$7-18</div>
+                    <p>CPM costs range from $7-18 across major platforms, pricing out small creators and startups entirely</p>
                 </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">🤖</div>
-                    <h3>Fake Engagement Economy</h3>
-                    <p>Existing alternatives rely on bots, fake clicks, and engagement manipulation that violate
-                        platform rules and damage trust.</p>
+                <div class="problem-card">
+                    <div class="icon">🤖</div>
+                    <h3>Fake Engagement</h3>
+                    <div class="stat">$1.5B</div>
+                    <p>A massive gray market for fake likes, bot comments, and engagement farms distorts analytics and erodes trust</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">⏱️</div>
+                    <h3>Exploited Users</h3>
+                    <div class="stat">900+ hrs</div>
+                    <p>Users spend over 900 hours per year generating engagement, earning $0 while platforms capture $135-225B annually</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="content-section" style="background: var(--bg-section);">
-        <div class="container">
-            <h2 class="section-title">The TrueEngage Solution</h2>
-
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>For Creators</h3>
-                    <p>Submit content, define tasks, fund with TEE tokens, and receive verified human engagement from
-                        real users.</p>
+    <!-- Solution Section -->
+    <section class="solution-section" id="solution">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>A Transparent Solution for <span class="highlight">Fair Engagement</span></h2>
+                <p>TrueEngage creates a marketplace where attention is valued and compensated</p>
+            </div>
+            <div class="solution-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Creators Define Tasks</h3>
+                    <p>Submit content and define engagement tasks like watching videos, writing reviews, or providing feedback with a fixed budget</p>
                 </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">💰</div>
-                    <h3>For Users</h3>
-                    <p>Browse available tasks, complete them honestly, submit proof, and earn crypto rewards for your
-                        attention.</p>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Users Complete Engagement</h3>
+                    <p>Real people browse available tasks, complete them honestly, and submit verifiable proof of participation</p>
                 </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Transparent & Fair</h3>
-                    <p>Blockchain-powered escrow ensures trustworthy payments, verifiable rewards, and quality
-                        engagement.</p>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Payments Released Transparently</h3>
+                    <p>Rewards are distributed automatically via escrow when tasks are verified — no middlemen, no delays</p>
                 </div>
+            </div>
+            <div class="solution-features">
+                <div class="feature-badge">✓ No Bots</div>
+                <div class="feature-badge">✓ No Fake Traffic</div>
+                <div class="feature-badge">✓ No Overspending</div>
+                <div class="feature-badge">✓ Complete Transparency</div>
+            </div>
+        </div>
+    </section>
 
-                <div class="feature-card">
-                    <div class="feature-icon">🌍</div>
-                    <h3>Global Access</h3>
-                    <p>Participate from anywhere without intermediaries, geographic restrictions, or complicated
-                        onboarding.</p>
+    <!-- For Creators Section -->
+    <section class="audience-section">
+        <div class="section-container">
+            <div class="audience-content">
+                <div class="audience-text">
+                    <h2>Built for <span class="highlight">Creators & Brands</span></h2>
+                    <p>Take control of your engagement budget and reach real humans who care about your content</p>
+                    <ul class="benefits-list">
+                        <li>
+                            <strong>Fixed Budgets, Guaranteed Results</strong>
+                            <p>Allocate exactly what you want to spend. If you budget for 100 engagements, you get exactly 100 verified human interactions</p>
+                        </li>
+                        <li>
+                            <strong>Real Feedback, Not Bots</strong>
+                            <p>Every interaction comes from verified humans who watched, read, or engaged with your content meaningfully</p>
+                        </li>
+                        <li>
+                            <strong>Transparent Pricing</strong>
+                            <p>No hidden costs, no algorithm penalties. You see exactly where your budget goes and what you receive</p>
+                        </li>
+                        <li>
+                            <strong>Escape Algorithm Dependency</strong>
+                            <p>Stop competing for organic reach. Pay directly for the attention your content deserves</p>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="how" class="content-section">
-        <div class="container">
-            <h2 class="section-title">How It Works</h2>
-
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">1️⃣</div>
-                    <h3>Acquire TRUE Tokens</h3>
-                    <p>Creators acquire TRUE tokens to fund engagement campaigns and promotional tasks.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">2️⃣</div>
-                    <h3>Lock in Escrow</h3>
-                    <p>Tokens are securely locked in smart contract escrow for verified engagement tasks.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">3️⃣</div>
-                    <h3>Complete Tasks</h3>
-                    <p>Users complete verified engagement tasks honestly and submit proof of completion.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">4️⃣</div>
-                    <h3>Earn Rewards</h3>
-                    <p>Rewards are automatically distributed to users after task verification is complete.</p>
+    <!-- For Users Section -->
+    <section class="audience-section" style="background: radial-gradient(ellipse at center, #1e1b4b 0%, #0a0a1a 50%);">
+        <div class="section-container">
+            <div class="audience-content">
+                <div class="audience-text">
+                    <h2>Earn for <span class="highlight">Your Attention</span></h2>
+                    <p>Your time and engagement have value. TrueEngage ensures you're compensated fairly</p>
+                    <ul class="benefits-list">
+                        <li>
+                            <strong>Get Paid for Real Participation</strong>
+                            <p>Complete tasks like watching content, writing reviews, voting, or providing feedback and earn rewards for each one</p>
+                        </li>
+                        <li>
+                            <strong>Meaningful Income Opportunity</strong>
+                            <p>Especially valuable for users in emerging markets where even modest rewards represent significant purchasing power</p>
+                        </li>
+                        <li>
+                            <strong>Simple, Honest Work</strong>
+                            <p>No tricks, no bots, no fake activity. Just real engagement from real people fairly compensated</p>
+                        </li>
+                        <li>
+                            <strong>Build Your Reputation</strong>
+                            <p>High-quality participants gain access to better tasks and higher rewards over time</p>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="roadmap" class="content-section" style="background: var(--bg-section);">
-        <div class="container">
-            <h2 class="section-title">Roadmap</h2>
-
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🚀</div>
-                    <h3>Phase 1 - MVP</h3>
-                    <p>Off-chain points system, manual verification, and early creator onboarding to test the platform.</p>
+    <!-- Why Blockchain Section -->
+    <section class="blockchain-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Why <span class="highlight">Blockchain</span>?</h2>
+                <p>We use blockchain only where it provides measurable value — not for speculation</p>
+            </div>
+            <div class="comparison-table">
+                <div class="comparison-row">
+                    <div><strong>Feature</strong></div>
+                    <div><strong>Traditional Platforms</strong></div>
+                    <div><strong>TrueEngage</strong></div>
                 </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">🔗</div>
-                    <h3>Phase 2 - Token Integration</h3>
-                    <p>Limited TRUE circulation, on-chain escrow implementation, and closed beta testing with select users.</p>
+                <div class="comparison-row">
+                    <div>Payments</div>
+                    <div class="cross">✗ Centralized & Opaque</div>
+                    <div class="check">✓ Transparent Escrow</div>
                 </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3>Phase 3 - Scale</h3>
-                    <p>Mobile apps launch, analytics dashboard, strategic partnerships, and public platform release.</p>
+                <div class="comparison-row">
+                    <div>Trust</div>
+                    <div class="cross">✗ Platform-Enforced</div>
+                    <div class="check">✓ Code-Enforced</div>
                 </div>
+                <div class="comparison-row">
+                    <div>Global Access</div>
+                    <div class="cross">✗ Restricted</div>
+                    <div class="check">✓ Permissionless</div>
+                </div>
+                <div class="comparison-row">
+                    <div>Fraud Detection</div>
+                    <div class="cross">✗ Hard to Audit</div>
+                    <div class="check">✓ Verifiable On-Chain</div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem; color: #a0a0b8;">
+                <p><strong>Blockchain enables trustless escrow, transparent payments, and global accessibility.</strong></p>
+                <p style="margin-top: 1rem;">It's infrastructure, not speculation.</p>
+            </div>
+        </div>
+    </section>
 
-                <div class="feature-card">
-                    <div class="feature-icon">🌐</div>
-                    <h3>Phase 4 - Decentralization</h3>
-                    <p>DAO governance implementation, advanced reputation system, and global expansion initiatives.</p>
+    <!-- Roadmap Section -->
+    <section class="roadmap-section" id="roadmap">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>The <span class="highlight">Roadmap</span></h2>
+                <p>Building step by step toward a fair engagement economy</p>
+            </div>
+            <div class="roadmap-timeline">
+                <div class="roadmap-item">
+                    <div class="roadmap-marker">1</div>
+                    <div class="roadmap-content">
+                        <h3>Phase 1 — MVP</h3>
+                        <ul>
+                            <li>Points-based system launch</li>
+                            <li>Manual verification processes</li>
+                            <li>Early creator onboarding</li>
+                            <li>Core platform functionality</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-marker">2</div>
+                    <div class="roadmap-content">
+                        <h3>Phase 2 — Integration</h3>
+                        <ul>
+                            <li>Escrow smart contracts deployed</li>
+                            <li>Closed beta with select creators</li>
+                            <li>Automated verification systems</li>
+                            <li>Reputation system launch</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-marker">3</div>
+                    <div class="roadmap-content">
+                        <h3>Phase 3 — Scale</h3>
+                        <ul>
+                            <li>Mobile app launch (iOS & Android)</li>
+                            <li>Advanced analytics dashboards</li>
+                            <li>Strategic partnerships</li>
+                            <li>Multi-language support</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="roadmap-marker">4</div>
+                    <div class="roadmap-content">
+                        <h3>Phase 4 — Decentralization</h3>
+                        <ul>
+                            <li>DAO governance implementation</li>
+                            <li>Advanced reputation algorithms</li>
+                            <li>Global market expansion</li>
+                            <li>Community-driven development</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Trust & Credibility Section -->
+    <section class="trust-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Built on <span class="highlight">Trust & Integrity</span></h2>
+                <p>TrueEngage is designed with ethical principles at its core</p>
+            </div>
+            <div class="trust-cards">
+                <div class="trust-card">
+                    <div class="icon">🛡️</div>
+                    <h3>Ethical Engagement</h3>
+                    <p>Strict anti-bot policies and reputation systems ensure only real human participation. We eliminate fake engagement at the protocol level</p>
+                </div>
+                <div class="trust-card">
+                    <div class="icon">⚖️</div>
+                    <h3>Legal Compliance</h3>
+                    <p>Utility-focused platform with no investment promises. Jurisdiction-aware rollout ensures we operate within legal frameworks</p>
+                </div>
+                <div class="trust-card">
+                    <div class="icon">🔍</div>
+                    <h3>Transparent Operations</h3>
+                    <p>All transactions are verifiable on-chain. Creators and users can audit every engagement and payment in real-time</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta" id="contact">
+        <h2>Join the Future of <span class="highlight">Fair Engagement</span></h2>
+        <p>Be among the first to experience a marketplace where attention is truly valued</p>
+        <form class="email-form" onsubmit="event.preventDefault(); alert('Thank you for joining! We\'ll be in touch soon.');">
+            <input type="email" class="email-input" placeholder="Enter your email" required>
+            <button type="submit" class="btn-primary">Join Early Access</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <div class="container">
-            <p>&copy; 2026 TrueEngage. Where Attention Meets Value.</p>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>TrueEngage</h4>
+                <p style="color: #a0a0b8; margin-top: 1rem;">Where real attention is fairly rewarded</p>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#whitepaper">Whitepaper</a></li>
+                    <li><a href="#roadmap">Roadmap</a></li>
+                    <li><a href="#documentation">Documentation</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#careers">Careers</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#press">Press Kit</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#terms">Terms of Use</a></li>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                    <li><a href="#compliance">Compliance</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 TrueEngage. Utility platform. No investment promises.</p>
         </div>
     </footer>
 
     <script>
-        // Mobile menu toggle
-        function toggleMobileMenu() {
-            const navMenu = document.getElementById('navMenu');
-            const menuBtn = document.querySelector('.mobile-menu-btn');
-            navMenu.classList.toggle('active');
-            menuBtn.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
-        }
-
-        // Close mobile menu when clicking a nav link
-        document.querySelectorAll('.nav-center a').forEach(link => {
-            link.addEventListener('click', () => {
-                const navMenu = document.getElementById('navMenu');
-                const menuBtn = document.querySelector('.mobile-menu-btn');
-                if (navMenu.classList.contains('active')) {
-                    navMenu.classList.remove('active');
-                    menuBtn.textContent = '☰';
-                }
-            });
-        });
-
-        // Theme toggle functionality
-        function toggleTheme() {
-            const html = document.documentElement;
-            const themeIcon = document.getElementById('theme-icon');
-            const currentTheme = html.getAttribute('data-theme');
-
-            if (currentTheme === 'dark') {
-                html.removeAttribute('data-theme');
-                themeIcon.textContent = '🌙';
-            } else {
-                html.setAttribute('data-theme', 'dark');
-                themeIcon.textContent = '☀️';
-            }
-        }
-
-        // Smooth scroll
+        // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.problem-card, .step, .trust-card, .roadmap-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // CTA buttons functionality
+        document.querySelectorAll('.btn-primary, .cta-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelector('#contact').scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
         });
     </script>
 </body>
-
 </html>
